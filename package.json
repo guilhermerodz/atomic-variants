@@ -1,0 +1,18 @@
+{
+  "name": "atomic-variants-root",
+  "private": true,
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "pnpm -F atomic-variants build --watch",
+    "test": "pnpm -F atomic-variants test",
+    "build": "pnpm -F atomic-variants build",
+    "format:write": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --write",
+    "format:check": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --check"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1",
+    "tsup": "^6.3.0",
+    "typescript": "^4.8.4"
+  },
+  "packageManager": "pnpm@7.9.0"
+}

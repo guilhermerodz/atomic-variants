@@ -1,0 +1,31 @@
+{
+  "name": "atomic-variants",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "cp ../README.md . && pnpm build",
+    "postpublish": "rm README.md",
+    "build": "tsup src",
+    "dev": "tsup src --watch",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "@types/react": "18.0.21",
+    "@vitejs/plugin-react": "^2.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "vite": "^3.1.8",
+    "vitest": "^0.24.3"
+  }
+}
