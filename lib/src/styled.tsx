@@ -28,7 +28,7 @@ export function styled<T extends VariantsDefinition, C extends AnyComponent>(
       className={
         getClasses({
           ...props.variants, // Populate with chosen variants
-          class: className, // Override those variants with class names on-demand
+          className, // Override those variants with class names on-demand
         }) || undefined // Prevent empty string
       }
       {...props}
