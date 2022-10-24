@@ -4,4 +4,4 @@ export {
   createShareableConfig as cs,
 } from './utilities'
 
-export { styled } from './styled'
+export { styled, styled as cz } from './styled'
