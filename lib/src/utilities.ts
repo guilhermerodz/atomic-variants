@@ -45,7 +45,6 @@ export function createVariantsMapper<T extends VariantsDefinition>({
     const compoundClasses =
       compoundVariants?.map(compound => {
         const { className, ...conditionedOptions } = compound
-        if (!className) return
 
         const matches = Object.keys(conditionedOptions).every(
           key => mergedOptions[key] === conditionedOptions[key],

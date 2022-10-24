@@ -13,5 +13,5 @@ export type VariantsConfig<T extends VariantsDefinition> = {
   base?: ClassValue
   variants?: T
   defaultVariants?: DefaultVariants<T>
-  compoundVariants?: Array<DefaultVariants<T> & ClassProp>
+  compoundVariants?: Array<DefaultVariants<T> & Required<ClassProp>>
 }
