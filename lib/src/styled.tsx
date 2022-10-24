@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { VariantsDefinition, DefaultVariants } from './types'
+import type { VariantsDefinition, DefaultVariants, VariantsConfig } from './types'
 import { createVariantsMapper } from './utilities'
 
 type AnyComponent =
@@ -9,7 +9,7 @@ type AnyComponent =
 
 export function styled<T extends VariantsDefinition, C extends AnyComponent>(
   baseComponent: C,
-  config: T,
+  config: VariantsConfig<T>,
 ) {
   const getClasses = createVariantsMapper(config)
 
