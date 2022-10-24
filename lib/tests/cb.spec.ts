@@ -52,6 +52,18 @@ describe('Props to Classes', () => {
     })
     expect(classes).toBe('base blue lg compound suffix')
   })
+
+  test('compound variants need to match all properties to apply', () => {
+    const getClasses = cb({
+      variants: { a: { 1: '1', 2: '2' }, b: { 3: '3', 4: '4' } },
+      compoundVariants: [{ a: 1, b: 3, className: 'compound' }],
+    })
+
+    expect(getClasses({ a: 1, b: 3 }).endsWith('compound'))
+    expect(getClasses({ a: 1, b: 4 }).endsWith('compound')).toBe(false)
+
+    expect(getClasses({ a: 1, b: 3, className: 'suffix' }).endsWith('suffix'))
+  })
 })
 
 describe('Edge cases', () => {
