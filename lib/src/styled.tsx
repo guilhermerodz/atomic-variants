@@ -1,6 +1,10 @@
 import React from 'react'
 
-import type { VariantsDefinition, DefaultVariants, VariantsConfig } from './types'
+import type {
+  VariantsDefinition,
+  DefaultVariants,
+  VariantsConfig,
+} from './types'
 import { createVariantsMapper } from './utilities'
 
 type AnyComponent =
