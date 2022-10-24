@@ -26,28 +26,30 @@ describe('React classnames', () => {
     expect(el?.className).toBe('base base-two red')
   })
 
-  test('styled components', () => {
-    const Div = styled('div', shareableConfig)
-    render(<Div id="2" />)
+  describe('Styled components', () => {
+    test('first depth', () => {
+      const Div = styled('div', shareableConfig)
+      render(<Div id="2" />)
 
-    const el = document.getElementById('2')
-    expect(el?.className).toBe('base base-two red')
-  })
+      const el = document.getElementById('2')
+      expect(el?.className).toBe('base base-two red')
+    })
 
-  test('nested styled components', () => {
-    const Div = styled('div', shareableConfig)
-    const NestedDiv = styled(Div, shareableConfig)
-    const NestedNestedDiv = styled(NestedDiv, shareableConfig)
+    test('third depth', () => {
+      const Div = styled('div', shareableConfig)
+      const NestedDiv = styled(Div, shareableConfig)
+      const NestedNestedDiv = styled(NestedDiv, shareableConfig)
 
-    render(<Div variants={{ color: 'green' }} id="3" />)
-    render(<NestedDiv variants={{ color: 'green' }} id="4" />)
-    render(<NestedNestedDiv variants={{ color: 'blue' }} id="5" />)
+      render(<Div variants={{ color: 'green' }} id="3" />)
+      render(<NestedDiv variants={{ color: 'green' }} id="4" />)
+      render(<NestedNestedDiv variants={{ color: 'blue' }} id="5" />)
 
-    const el1 = document.getElementById('3')
-    const el2 = document.getElementById('4')
-    const el3 = document.getElementById('5')
+      const el1 = document.getElementById('3')
+      const el2 = document.getElementById('4')
+      const el3 = document.getElementById('5')
 
-    expect(el1.className).toBe(el2.className)
-    expect(el3.className).not.toBe(el2.className)
+      expect(el1.className).toBe(el2.className)
+      expect(el3.className).not.toBe(el2.className)
+    })
   })
 })
