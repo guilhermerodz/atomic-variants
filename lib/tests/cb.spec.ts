@@ -53,6 +53,10 @@ describe('Props to Classes', () => {
     expect(classes).toBe('base blue lg compound suffix')
   })
 
+  test('support base without variants', () => {
+    expect(cb({ base: 'a' })()).toBe('a')
+  })
+
   test('compound variants need to match all properties to apply', () => {
     const getClasses = cb({
       variants: { a: { 1: '1', 2: '2' }, b: { 3: '3', 4: '4' } },
