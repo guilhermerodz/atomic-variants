@@ -2,7 +2,6 @@
 const config = {
   tabWidth: 2,
   useTabs: false,
-  resolveGlobalModules: true,
   semi: false,
   singleQuote: true,
   trailingComma: 'all',
