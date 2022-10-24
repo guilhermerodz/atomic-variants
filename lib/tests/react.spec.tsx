@@ -37,12 +37,17 @@ describe('React', () => {
   test('With nested Styled', () => {
     const Div = styled('div', shareableConfig)
     const NestedDiv = styled(Div, shareableConfig)
+    const NestedNestedDiv = styled(NestedDiv, shareableConfig)
 
     render(<Div variants={{ color: 'green' }} id="3" />)
     render(<NestedDiv variants={{ color: 'green' }} id="4" />)
+    render(<NestedNestedDiv variants={{ color: 'blue' }} id="5" />)
 
     const el1 = document.getElementById('3')
     const el2 = document.getElementById('4')
+    const el3 = document.getElementById('5')
+
     expect(el1.className).toBe(el2.className)
+    expect(el3.className).not.toBe(el2.className)
   })
 })
