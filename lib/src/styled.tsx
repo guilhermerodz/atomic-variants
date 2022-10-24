@@ -23,11 +23,11 @@ export function styled<T extends VariantsDefinition, C extends AnyComponent>(
     React.ComponentProps<C> & {
       variants?: DefaultVariants<T>
     }
-  >(({ className, ...props }, forwardedRef) => (
+  >(({ className, variants, ...props }, forwardedRef) => (
     <PolymorphicComponent
       className={
         getClasses({
-          ...props.variants, // Populate with chosen variants
+          ...variants, // Populate with chosen variants
           className, // Override those variants with class names on-demand
         }) || undefined // Prevent empty string
       }
