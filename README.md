@@ -17,18 +17,14 @@ const Button = styled('button', {
   variants: {
     intent: {
       primary: [
-        'bg-blue-500',
+        'bg-black',
         'text-white',
-        'border-transparent',
-        'hover:bg-blue-600',
       ],
       // **or**
-      // primary: "bg-blue-500 text-white border-transparent hover:bg-blue-600",
+      // primary: "bg-black text-white",
       secondary: [
         'bg-white',
-        'text-gray-800',
-        'border-gray-400',
-        'hover:bg-gray-100',
+        'text-black',
       ],
     },
     size: {
@@ -36,7 +32,7 @@ const Button = styled('button', {
       medium: ['text-base', 'py-2', 'px-4'],
     },
   },
-  compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
+  compoundVariants: [{ intent: 'secondary', size: 'small', className: 'uppercase' }],
   defaultVariants: {
     intent: 'primary',
     size: 'medium',
@@ -44,13 +40,8 @@ const Button = styled('button', {
 })
 
 // It's ready to use. Includes a `variants` prop.
-<Button variants={{ intent: 'secondary }}>
-
-button()
-// => "font-semibold border rounded bg-blue-500 text-white border-transparent hover:bg-blue-600 text-base py-2 px-4 uppercase"
-
-button({ intent: 'secondary', size: 'small' })
-// => "font-semibold border rounded bg-white text-gray-800 border
+<Button variants={{ intent: 'secondary' }}>Click me</Button>
+// => className: "font-semibold border rounded bg-white text-black text-base py-2 px-4"
 ```
 
 ## cx (Class Concat & Flatten)
@@ -77,27 +68,19 @@ const button = cb({
   base: ['font-semibold', 'border', 'rounded'],
   variants: {
     intent: {
-      primary: [
-        'bg-blue-500',
-        'text-white',
-        'border-transparent',
-        'hover:bg-blue-600',
-      ],
+      primary: ['bg-black', 'text-white'],
       // **or**
-      // primary: "bg-blue-500 text-white border-transparent hover:bg-blue-600",
-      secondary: [
-        'bg-white',
-        'text-gray-800',
-        'border-gray-400',
-        'hover:bg-gray-100',
-      ],
+      // primary: "bg-black text-white",
+      secondary: ['bg-white', 'text-black'],
     },
     size: {
       small: ['text-sm', 'py-1', 'px-2'],
       medium: ['text-base', 'py-2', 'px-4'],
     },
   },
-  compoundVariants: [{ intent: 'primary', size: 'medium', class: 'uppercase' }],
+  compoundVariants: [
+    { intent: 'secondary', size: 'small', className: 'uppercase' },
+  ],
   defaultVariants: {
     intent: 'primary',
     size: 'medium',
@@ -105,8 +88,8 @@ const button = cb({
 })
 
 button()
-// => "font-semibold border rounded bg-blue-500 text-white border-transparent hover:bg-blue-600 text-base py-2 px-4 uppercase"
+// => "font-semibold border rounded bg-black text-white text-base py-2 px-4"
 
 button({ intent: 'secondary', size: 'small' })
-// => "font-semibold border rounded bg-white text-gray-800 border
+// => "font-semibold border rounded bg-white text-black text-sm py-1 px-2 uppercase"
 ```
