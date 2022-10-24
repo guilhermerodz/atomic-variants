@@ -1,11 +1,11 @@
 {
-  "name": "atomic-variants-root",
+  "name": "root",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "pnpm -F atomic-variants build --watch",
-    "test": "pnpm -F atomic-variants test",
-    "build": "pnpm -F atomic-variants build",
+    "dev": "pnpm -F @rodz/atomic-variants build --watch",
+    "test": "pnpm -F @rodz/atomic-variants test",
+    "build": "pnpm -F @rodz/atomic-variants build",
     "format:write": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --write",
     "format:check": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --check"
   },

@@ -1,5 +1,5 @@
 {
-  "name": "atomic-variants",
+  "name": "@rodz/atomic-variants",
   "version": "0.1.0",
   "license": "MIT",
   "main": "./dist/index.js",
