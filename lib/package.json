@@ -18,7 +18,6 @@
   ],
   "scripts": {
     "prepublishOnly": "cp ../README.md . && pnpm build",
-    "publish": "pnpm publish || rm README.md",
     "postpublish": "rm README.md",
     "build": "tsup src",
     "dev": "tsup src --watch",
