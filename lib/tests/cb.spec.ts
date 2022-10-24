@@ -68,24 +68,24 @@ describe('Props to Classes', () => {
 
     expect(getClasses({ a: 1, b: 3, className: 'suffix' }).endsWith('suffix'))
   })
-})
 
-describe('Edge cases', () => {
-  const getClasses = cb({
-    base: 'base',
-    variants: {
-      className: { foo: 'bar', john: 'doe' },
-    },
-    defaultVariants: {
-      className: 'john',
-    },
-    // There's no way to provide a `className`
-    // other than 'john' due in this case 👇🏻
-    compoundVariants: [{ className: 'john' }],
-  })
+  describe('Edge cases', () => {
+    test('`className` inside `variants` kills `compoundVariants`', () => {
+      const getClasses = cb({
+        base: 'base',
+        variants: {
+          className: { foo: 'bar', john: 'doe' },
+        },
+        defaultVariants: {
+          className: 'john',
+        },
+        // There's no way to provide a `className`
+        // other than 'john' due in this case 👇🏻
+        compoundVariants: [{ className: 'john' }],
+      })
 
-  test('', () => {
-    const classes = getClasses()
-    expect(classes).toBe('base doe john')
+      const classes = getClasses()
+      expect(classes).toBe('base doe john')
+    })
   })
 })
