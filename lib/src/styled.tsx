@@ -37,7 +37,7 @@ export function styled<T extends VariantsDefinition, C extends AnyComponent>(
     typeof baseComponent === 'string' &&
     !ComponentWithVariantsProps.displayName
   )
-    ComponentWithVariantsProps.displayName = baseComponent as string
+    ComponentWithVariantsProps.displayName = baseComponent
 
   return ComponentWithVariantsProps
 }
