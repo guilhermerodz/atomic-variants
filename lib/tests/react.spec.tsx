@@ -18,15 +18,15 @@ const shareableConfig = cs({
 
 const getClasses = cb(shareableConfig)
 
-describe('React', () => {
-  test('Without Styled', () => {
+describe('React classnames', () => {
+  test('class builder only', () => {
     render(<div id="1" className={getClasses()} />)
 
     const el = document.getElementById('1')
     expect(el?.className).toBe('base base-two red')
   })
 
-  test('With Styled', () => {
+  test('styled components', () => {
     const Div = styled('div', shareableConfig)
     render(<Div id="2" />)
 
@@ -34,7 +34,7 @@ describe('React', () => {
     expect(el?.className).toBe('base base-two red')
   })
 
-  test('With nested Styled', () => {
+  test('nested styled components', () => {
     const Div = styled('div', shareableConfig)
     const NestedDiv = styled(Div, shareableConfig)
     const NestedNestedDiv = styled(NestedDiv, shareableConfig)
