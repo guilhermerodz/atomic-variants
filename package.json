@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "pnpm -F @rodz/atomic-variants build --watch",
+    "dev": "pnpm -F @rodz/atomic-variants dev",
     "test": "pnpm -F @rodz/atomic-variants test",
     "test:coverage": "pnpm -F @rodz/atomic-variants test:coverage",
     "build": "pnpm -F @rodz/atomic-variants build",
