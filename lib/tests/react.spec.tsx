@@ -16,6 +16,8 @@ const shareableConfig = cs({
   compoundVariants: [{ color: 'blue', className: 'compound' }],
 })
 
+const getClasses = cb(shareableConfig)
+
 let lastId = 0
 const newId = () => `test-id-${++lastId}`
 
@@ -23,7 +25,6 @@ describe('React classnames', () => {
   test('class builder only', () => {
     const id = newId()
 
-    const getClasses = cb(shareableConfig)
     render(<div id={id} className={getClasses()} />)
 
     const el = document.getElementById(id)
@@ -52,25 +53,28 @@ describe('React classnames', () => {
 
       render(<Div variants={{ color: 'green' }} id={id1} />)
       render(<NestedDiv variants={{ color: 'green' }} id={id2} />)
-      render(<NestedNestedDiv variants={{ color: 'blue' }} id={id3} />)
+      render(<NestedNestedDiv variants={{ color: 'green' }} id={id3} />)
 
-      const el1 = document.getElementById(id1)
-      const el2 = document.getElementById(id2)
-      const el3 = document.getElementById(id3)
+      const variantClasses = getClasses({ color: 'green' })
+      const defaultClasses = getClasses()
 
-      expect(el1?.className).toBe(el2?.className)
-      expect(el3?.className).not.toBe(el2?.className)
+      expect(document.getElementById(id1)?.className).toBe(variantClasses)
+      expect(document.getElementById(id2)?.className).toBe(
+        [defaultClasses, variantClasses].join(' '),
+      )
+      expect(document.getElementById(id3)?.className).toBe(
+        [defaultClasses, defaultClasses, variantClasses].join(' '),
+      )
     })
 
-    describe('when the final className is empty', () => {
-      test('prevent empty `class` attribute in HTML element', () => {
-        const id = newId()
+    test('intrinsic JSX className works', () => {
+      const id = newId()
 
-        const Div = styled('div', { base: ['', [''], ''] })
-        render(<Div id={id} />)
+      const Div = styled('div', shareableConfig)
+      render(<Div id={id} className="final-suffix" />)
 
-        const el1 = document.getElementById(id)
-      })
+      const el = document.getElementById(id)
+      expect(el?.className.endsWith('final-suffix')).toBe(true)
     })
   })
 })
