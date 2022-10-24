@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
+    coverage: {
+      exclude: ['./vitest-setup.ts', 'src/**/*.spec.ts', 'src/**/types.ts'],
+    },
   },
 })

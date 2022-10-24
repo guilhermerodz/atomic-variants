@@ -5,6 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "pnpm -F @rodz/atomic-variants build --watch",
     "test": "pnpm -F @rodz/atomic-variants test",
+    "test:coverage": "pnpm -F @rodz/atomic-variants test:coverage",
     "build": "pnpm -F @rodz/atomic-variants build",
     "format:write": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --write",
     "format:check": "prettier '**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss,yaml,yml}' --check"
