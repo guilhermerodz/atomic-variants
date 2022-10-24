@@ -48,19 +48,17 @@ describe('React classnames', () => {
         const el2 = document.getElementById('4')
         const el3 = document.getElementById('5')
 
-        expect(el1.className).toBe(el2.className)
-        expect(el3.className).not.toBe(el2.className)
+        expect(el1?.className).toBe(el2?.className)
+        expect(el3?.className).not.toBe(el2?.className)
       })
     })
 
     describe('when the final className is empty', () => {
       test('prevent empty `class` attribute in HTML element', () => {
-        const Div = styled('div', { base: ['', [''], undefined, ''] })
+        const Div = styled('div', { base: ['', [''], ''] })
         render(<Div id="6" />)
 
         const el1 = document.getElementById('6')
-
-        console.log({ cn: el1.className })
       })
     })
   })
