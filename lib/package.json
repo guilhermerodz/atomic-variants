@@ -14,11 +14,11 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "../README.md"
   ],
   "scripts": {
-    "prepublishOnly": "cp ../README.md . && pnpm build",
-    "postpublish": "rm README.md",
+    "prepublishOnly": "pnpm build",
     "build": "tsup src",
     "dev": "tsup src --watch",
     "test": "vitest --passWithNoTests",
