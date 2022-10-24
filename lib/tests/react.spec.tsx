@@ -31,37 +31,35 @@ describe('React classnames', () => {
   })
 
   describe('Styled components', () => {
-    describe('Nesting', () => {
-      test('1st depth', () => {
-        const id = newId()
+    test('single component', () => {
+      const id = newId()
 
-        const Div = styled('div', shareableConfig)
-        render(<Div id={id} />)
+      const Div = styled('div', shareableConfig)
+      render(<Div id={id} />)
 
-        const el = document.getElementById(id)
-        expect(el?.className).toBe('base base-two red')
-      })
+      const el = document.getElementById(id)
+      expect(el?.className).toBe('base base-two red')
+    })
 
-      test('3rd depth', () => {
-        const id1 = newId()
-        const id2 = newId()
-        const id3 = newId()
+    test('nested components', () => {
+      const id1 = newId()
+      const id2 = newId()
+      const id3 = newId()
 
-        const Div = styled('div', shareableConfig)
-        const NestedDiv = styled(Div, shareableConfig)
-        const NestedNestedDiv = styled(NestedDiv, shareableConfig)
+      const Div = styled('div', shareableConfig)
+      const NestedDiv = styled(Div, shareableConfig)
+      const NestedNestedDiv = styled(NestedDiv, shareableConfig)
 
-        render(<Div variants={{ color: 'green' }} id={id1} />)
-        render(<NestedDiv variants={{ color: 'green' }} id={id2} />)
-        render(<NestedNestedDiv variants={{ color: 'blue' }} id={id3} />)
+      render(<Div variants={{ color: 'green' }} id={id1} />)
+      render(<NestedDiv variants={{ color: 'green' }} id={id2} />)
+      render(<NestedNestedDiv variants={{ color: 'blue' }} id={id3} />)
 
-        const el1 = document.getElementById(id1)
-        const el2 = document.getElementById(id2)
-        const el3 = document.getElementById(id3)
+      const el1 = document.getElementById(id1)
+      const el2 = document.getElementById(id2)
+      const el3 = document.getElementById(id3)
 
-        expect(el1?.className).toBe(el2?.className)
-        expect(el3?.className).not.toBe(el2?.className)
-      })
+      expect(el1?.className).toBe(el2?.className)
+      expect(el3?.className).not.toBe(el2?.className)
     })
 
     describe('when the final className is empty', () => {
