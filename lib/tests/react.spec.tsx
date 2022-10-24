@@ -33,4 +33,16 @@ describe('React', () => {
     const el = document.getElementById('2')
     expect(el?.className).toBe('base base-two red')
   })
+
+  test('With nested Styled', () => {
+    const Div = styled('div', shareableConfig)
+    const NestedDiv = styled(Div, shareableConfig)
+
+    render(<Div variants={{ color: 'green' }} id="3" />)
+    render(<NestedDiv variants={{ color: 'green' }} id="4" />)
+
+    const el1 = document.getElementById('3')
+    const el2 = document.getElementById('4')
+    expect(el1.className).toBe(el2.className)
+  })
 })
