@@ -1,17 +1,12 @@
 # Atomic Variants
 
-Acknowledgements:
-
-- [joe-bell/cva](https://github.com/joe-bell/cva) for type-safe atomic class names (strong read 👍🏻)
-- [stitchesjs/stitches](https://github.com/stitchesjs/stitches) for React composability
-
-## Get Started
+## 🚀 Get Started
 
 ```sh
 npm i @rodz/atomic-variants
 ```
 
-### Tailwind Intellisense for VSCode
+### 🧠 Tailwind Intellisense for VSCode
 
 If you're using the ["Tailwind CSS IntelliSense" Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), you can enable autocompletion for `atomic-variants` by adding the following to your [`settings.json`](https://code.visualstudio.com/docs/getstarted/settings):
 
@@ -23,7 +18,54 @@ If you're using the ["Tailwind CSS IntelliSense" Visual Studio Code extension](h
 }
 ```
 
-## Usage
+<details>
+<summary>👍 VSCode Pro Tips</summary>
+  
+### Improve Regex performance
+
+If you adopt the `cz` alias instead of `styled` and you are using the Tailwind extension, know you can improve your Regex performance:
+
+```diff
+// .vscode/settings.json
+{
+  "tailwindCSS.experimental.classRegex": [
+-     ["(?:styled|c[xsb])\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
++     ["c[zxsb]\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}
+
+// src/components/Button.tsx
+- import { styled } from '@rodz/atomic-variants'
++ import { cz } from '@rodz/atomic-variants'
+
+- export const Button = styled('button', {...})
++ export const Button = cz('button', {...})
+```
+
+### Project-specific configuration
+
+You peers can share the same setup if they have installed the Tailwind extension.
+Commit to your `git` repo instead of your personal `User` settings:
+
+```
+✅ Prefer Workspace Settings
+my-git-repo-directory/
+└── .vscode/
+    └── settings.json 👍
+
+❌ Not Personal Settings
+Users/
+└── username/
+    └── Library/
+        └── Application Support/
+            └── Code/
+                └── User/
+                    └── settings.json 👎
+```
+
+</details>
+
+## 🥳 Quick Start
 
 ### styled (Composable Components)
 
@@ -63,6 +105,12 @@ const Button = styled('button', {
 <Button variants={{ intent: 'secondary' }}>Click me</Button>
 // => className: "font-semibold border rounded bg-white text-black text-base py-2 px-4"
 ```
+
+## 📓 Features
+
+### cz
+
+Alias for `styled`. See [VSCode Pro Tips](#regex-performance) to understand why.
 
 ### cx (Class Concat & Flatten)
 
@@ -158,3 +206,10 @@ export const Td = styled('td', {
   base: [sharedTableCell.base, 'py-4'],
 })
 ```
+
+---
+
+## Acknowledgements:
+
+- [joe-bell/cva](https://github.com/joe-bell/cva) 🧬 for type-safe atomic class names
+- [stitchesjs/stitches](https://github.com/stitchesjs/stitches) 🧵 for React composability
