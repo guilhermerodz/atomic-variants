@@ -1,4 +1,4 @@
-# Atomic Variants 🎱
+# Atomic Variants
 
 ## 🚀 Get Started
 
