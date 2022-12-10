@@ -22,19 +22,19 @@ export function styled<T extends VariantsDefinition, C extends AnyComponent>(
     React.ElementRef<C>,
     React.ComponentProps<C> & {
       variants?: DefaultVariants<T>
+      as?: AnyComponent
     }
-  >(({ className, variants, ...props }, forwardedRef) => (
-    <PolymorphicComponent
-      className={
+  >(({ className, variants, as, ...props }, forwardedRef) =>
+    React.createElement(as ?? PolymorphicComponent, {
+      className:
         getClasses({
           ...variants, // Populate with chosen variants
           className, // Override those variants with class names on-demand
-        }) || undefined // Prevent empty string
-      }
-      {...props}
-      ref={forwardedRef}
-    />
-  ))
+        }) || undefined,
+      ref: forwardedRef,
+      ...props,
+    }),
+  )
 
   // Prevent component from showing as `Anonymous` (improves debugging)
   if (
