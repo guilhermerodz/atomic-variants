@@ -42,6 +42,17 @@ describe('React classnames', () => {
       expect(el?.className).toBe('base base-two red')
     })
 
+    test('single component using `as` prop', () => {
+      const id = newId()
+
+      const Div = styled('div', shareableConfig)
+      render(<Div as="main" id={id} />)
+
+      const el = document.getElementById(id)
+      expect(el?.className).toBe('base base-two red')
+      expect(el?.tagName).toBe('MAIN')
+    })
+
     test('nested components', () => {
       const id1 = newId()
       const id2 = newId()
